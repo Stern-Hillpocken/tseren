@@ -1,1 +1,2 @@
-<app-run-header></app-run-header>
+<app-run-header [gameState]="gameState"></app-run-header>
+<app-mod-clicker (updateStateEmitter)="onUpdateStateReceive($event)"></app-mod-clicker>

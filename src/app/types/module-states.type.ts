@@ -1,0 +1,1 @@
+export type ModuleStates = "off" | "min" | "max";

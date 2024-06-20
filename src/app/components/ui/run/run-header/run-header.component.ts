@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { GameState } from 'src/app/models/game-state.model';
 
 @Component({
   selector: 'app-run-header',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./run-header.component.scss']
 })
 export class RunHeaderComponent {
+
+  @Input() gameState!: GameState;
 
 }

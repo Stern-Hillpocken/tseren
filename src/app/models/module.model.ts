@@ -1,6 +1,8 @@
+import { ModuleStates } from "../types/module-states.type";
+
 export class Module {
     constructor(
         public name: string,
-        public state: "off" | "min" | "max"
+        public state: ModuleStates
     ) {}
 }

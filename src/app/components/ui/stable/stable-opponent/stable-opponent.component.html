@@ -1,1 +1,7 @@
-<p>stable-opponent works!</p>
+<div>
+    <div *ngFor="let opponent of opponents">
+        <h3>{{ opponent.name }}</h3>
+        <p>{{ opponent.speed }}</p>
+        <button (click)="selectOpponent(opponent)">Select</button>
+    </div>
+</div>

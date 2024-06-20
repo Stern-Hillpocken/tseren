@@ -20,6 +20,8 @@ import { StableJirginComponent } from './components/ui/stable/stable-jirgin/stab
 import { StableOpponentComponent } from './components/ui/stable/stable-opponent/stable-opponent.component';
 import { StableTrackComponent } from './components/ui/stable/stable-track/stable-track.component';
 import { StableFooterComponent } from './components/ui/stable/stable-footer/stable-footer.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ModClickerComponent } from './components/ui/run/jirgin-modules/mod-clicker/mod-clicker.component';
 
 @NgModule({
   declarations: [
@@ -40,11 +42,13 @@ import { StableFooterComponent } from './components/ui/stable/stable-footer/stab
     StableJirginComponent,
     StableOpponentComponent,
     StableTrackComponent,
-    StableFooterComponent
+    StableFooterComponent,
+    ModClickerComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

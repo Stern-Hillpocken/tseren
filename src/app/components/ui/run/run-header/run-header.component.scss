@@ -1,0 +1,15 @@
+.run-header {
+    position: fixed;
+    width: 100%;
+}
+.progress-bar {
+    width: 95%;
+    margin: auto;
+    height: 1em;
+    border: 1px solid black;
+    position: relative;
+}
+
+.player, .opponent {
+    position: absolute;
+}

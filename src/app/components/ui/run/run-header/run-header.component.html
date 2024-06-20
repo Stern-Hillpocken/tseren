@@ -1,1 +1,10 @@
-<p>run-header works!</p>
+<div class="run-header">
+    <div class="progress-bar">
+        <div class="player" [ngStyle]="{'left': 100*gameState.jirgin.progress/gameState.track.size+'%'}">^You</div>
+        <div class="opponent" [ngStyle]="{'left': 100*gameState.opponent.progress/gameState.track.size+'%'}">^Opponent</div>
+    </div>
+    <div>
+        <p>Opponent speed: {{ gameState.opponent.speed }}</p>
+        <p>Your speed: {{ gameState.jirgin.currentSpeed }}</p>
+    </div>
+</div>

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Track } from 'src/app/models/track.model';
 
 @Component({
   selector: 'app-stable-track',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class StableTrackComponent {
 
+  @Input() tracks!: Track[];
+  
+  @Output() selectedTrackEmitter: EventEmitter<Track> = new EventEmitter();
+
+  selectTrack(track: Track): void {
+    this.selectedTrackEmitter.emit(track);
+  }
 }

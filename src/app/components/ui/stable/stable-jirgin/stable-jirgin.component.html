@@ -1,1 +1,9 @@
-<p>stable-jirgin works!</p>
+<div>
+    <div *ngFor="let jirgin of jirgins">
+        <h3>{{ jirgin.name }}</h3>
+        <ul>
+            <li *ngFor="let mod of jirgin.modules">{{ mod.name }}</li>
+        </ul>
+        <button (click)="selectJirgin(jirgin)">Select</button>
+    </div>
+</div>

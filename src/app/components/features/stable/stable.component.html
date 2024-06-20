@@ -1,5 +1,14 @@
 <app-stable-header></app-stable-header>
-<app-stable-jirgin></app-stable-jirgin>
-<app-stable-opponent></app-stable-opponent>
-<app-stable-track></app-stable-track>
+<app-stable-jirgin
+    [jirgins]="jirgins"
+    (selectedJirginEmitter)="onSelectedJirginReceive($event)"
+    ></app-stable-jirgin>
+<app-stable-opponent
+    [opponents]="opponents"
+    (selectedOpponentEmitter)="onSelectedOpponentReceive($event)"
+    ></app-stable-opponent>
+<app-stable-track
+    [tracks]="tracks"
+    (selectedTrackEmitter)="onSelectedTrackReceive($event)"
+    ></app-stable-track>
 <app-stable-footer [gameState]="gameState"></app-stable-footer>
