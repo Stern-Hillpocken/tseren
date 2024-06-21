@@ -1,6 +1,6 @@
 [
     {
-        "name": "jbdflkj",
-        "modules": ["piuf", "poi"]
+        "name": "Starter-One",
+        "modules": ["clicker", "binary", "resize"]
     }
 ]

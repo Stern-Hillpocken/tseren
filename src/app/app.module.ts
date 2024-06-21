@@ -22,6 +22,13 @@ import { StableTrackComponent } from './components/ui/stable/stable-track/stable
 import { StableFooterComponent } from './components/ui/stable/stable-footer/stable-footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ModClickerComponent } from './components/ui/run/jirgin-modules/mod-clicker/mod-clicker.component';
+import { FinishPageComponent } from './pages/finish-page/finish-page.component';
+import { FinishComponent } from './components/features/finish/finish.component';
+import { FinishHeaderComponent } from './components/ui/finish/finish-header/finish-header.component';
+import { FinishSummaryComponent } from './components/ui/finish/finish-summary/finish-summary.component';
+import { FinishFooterComponent } from './components/ui/finish/finish-footer/finish-footer.component';
+import { ModBinaryComponent } from './components/ui/run/jirgin-modules/mod-binary/mod-binary.component';
+import { ModResizeComponent } from './components/ui/run/jirgin-modules/mod-resize/mod-resize.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +50,14 @@ import { ModClickerComponent } from './components/ui/run/jirgin-modules/mod-clic
     StableOpponentComponent,
     StableTrackComponent,
     StableFooterComponent,
-    ModClickerComponent
+    ModClickerComponent,
+    FinishPageComponent,
+    FinishComponent,
+    FinishHeaderComponent,
+    FinishSummaryComponent,
+    FinishFooterComponent,
+    ModBinaryComponent,
+    ModResizeComponent
   ],
   imports: [
     BrowserModule,

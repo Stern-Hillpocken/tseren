@@ -1,7 +1,7 @@
-import { Language } from "../types/languages.type";
+import { Languages } from "../types/languages.type";
 
 export class Settings {
     constructor(
-        public language: Language
+        public language: Languages
     ) {}
 }

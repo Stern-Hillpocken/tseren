@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { GameState } from 'src/app/models/game-state.model';
 import { Module } from 'src/app/models/module.model';
 import { GameStateService } from 'src/app/shared/game-state.service';
+import { ModuleNames } from 'src/app/types/module-names.type';
 
 @Component({
   selector: 'app-run',
@@ -23,6 +24,13 @@ export class RunComponent {
 
   onUpdateStateReceive(module: Module): void {
     this.gss.updateModule(module);
+  }
+
+  needModule(name: ModuleNames): boolean {
+    for(let mod of this.gameState.jirgin.modules) {
+      if(mod.name === name) return true;
+    }
+    return false;
   }
 
 }

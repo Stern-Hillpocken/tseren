@@ -1,2 +1,6 @@
 <app-run-header [gameState]="gameState"></app-run-header>
-<app-mod-clicker (updateStateEmitter)="onUpdateStateReceive($event)"></app-mod-clicker>
+<div class="modules-container">
+    <app-mod-clicker *ngIf="needModule('clicker')" (updateStateEmitter)="onUpdateStateReceive($event)"></app-mod-clicker>
+    <app-mod-binary *ngIf="needModule('binary')" (updateStateEmitter)="onUpdateStateReceive($event)"></app-mod-binary>
+    <app-mod-resize *ngIf="needModule('resize')" (updateStateEmitter)="onUpdateStateReceive($event)"></app-mod-resize>
+</div>

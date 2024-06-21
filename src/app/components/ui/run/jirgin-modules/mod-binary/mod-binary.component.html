@@ -1,0 +1,9 @@
+<div class="module">
+    <h3>[{{ state }}] {{ name }}</h3>
+    <p>Target: {{ targetValue }}</p>
+    <p>Current: {{ currentValue }}</p>
+    <div>
+        <button *ngFor="let val of buttonValue; let i = index" (click)="onClick(i)" [ngClass]="buttonActivated[i] ? 'selected' : ''">{{ val }}</button>
+    </div>
+    <p>{{ light }}/5</p>
+</div>

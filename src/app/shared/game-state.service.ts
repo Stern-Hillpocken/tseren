@@ -7,13 +7,14 @@ import { Track } from '../models/track.model';
 import { Opponent } from '../models/opponent.model';
 import { Settings } from '../models/settings.model';
 import { Module } from '../models/module.model';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GameStateService {
 
-  private readonly _gameState$: BehaviorSubject<GameState> = new BehaviorSubject(this.init());
+  private readonly _gameState$: BehaviorSubject<GameState> = new BehaviorSubject(new GameState(new Jirgin("", [], 0, 0), new Opponent("", 0, 0), new Track("", 0), new Settings("en")));
 
   jirgins: Jirgin[] = [];
   opponents: Opponent[] = [];
@@ -21,7 +22,7 @@ export class GameStateService {
 
   speed = {"off": -2, "min": 2, "max": 5};
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     this.http.get("assets/json/jirgins.json").subscribe((jJson: any) => {
       for(const j of jJson) this.jirgins.push({"name": j.name, "modules": this.modulesStringNameToArrayObject(j.modules), "currentSpeed": 0, "progress": 0});
     });
@@ -33,8 +34,10 @@ export class GameStateService {
     });
   }
 
-  init(): GameState {
-    return new GameState(new Jirgin("", [], 0, 0), new Opponent("", 0, 0), new Track("", 0), new Settings("en"));
+  reset(): void {
+    this._gameState$.value.jirgin = new Jirgin("", [], 0, 0);
+    this._gameState$.value.opponent = new Opponent("", 0, 0);
+    this._gameState$.value.track = new Track("", 0);
   }
 
   get(): Observable<GameState> {
@@ -80,8 +83,14 @@ export class GameStateService {
   }
 
   tick(): void {
+    console.log("tick")
+    let isFinish: boolean = false;
     // Opponent move
     this._gameState$.value.opponent.progress += this._gameState$.value.opponent.speed;
+    if(this._gameState$.value.opponent.progress >= this._gameState$.value.track.size) {
+      isFinish = true;
+      this.router.navigateByUrl("finish");
+    }
 
     // Player move
     this._gameState$.value.jirgin.currentSpeed = 0;
@@ -89,19 +98,29 @@ export class GameStateService {
       this._gameState$.value.jirgin.currentSpeed += this.speed[mod.state];
     }
     if(this._gameState$.value.jirgin.currentSpeed > 0) this._gameState$.value.jirgin.progress += this._gameState$.value.jirgin.currentSpeed;
+    if(this._gameState$.value.jirgin.progress >= this._gameState$.value.track.size) {
+      isFinish = true;
+      this.router.navigateByUrl("finish");
+    }
 
     // Restart
-    setTimeout(() => {
-      this.tick();
-    }, 1000);
+    if(!isFinish){
+      setTimeout(() => {this.tick();}, 1000);
+    }
   }
 
   updateModule(module: Module): void {
     for(let mod of this._gameState$.value.jirgin.modules) {
-      if(mod.name = module.name) {
+      if(mod.name === module.name) {
         mod.state = module.state;
         break;
       }
     }
   }
+
+  newRun(): void {
+    this.reset();
+    console.log(this._gameState$.value)
+  }
+
 }

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Language } from 'src/app/types/languages.type';
+import { Languages } from 'src/app/types/languages.type';
 
 @Component({
   selector: 'app-home-buttons',
@@ -8,6 +8,6 @@ import { Language } from 'src/app/types/languages.type';
 })
 export class HomeButtonsComponent {
 
-  @Input() language!: Language;
+  @Input() language!: Languages;
 
 }

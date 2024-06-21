@@ -1,1 +1,1 @@
-export type ModuleNames = "cliker" | "simon";
+export type ModuleNames = "binary" | "clicker" | "resize" | "simon";
